@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Publications — Dr. [Your Name]</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream:#F7F4EF; --cream2:#EDE9E1; --white:#FFFFFF;
+  --ink:#1A1A2E; --ink2:#2E3A4E; --muted:#7A8899; --border:#D8D2C8;
+  --teal:#7209b7; --teal2:#3a0ca3; --teal-lt:#f0e6ff; --teal-md:#b980e0;
+  --coral:#f72585; --gold:#4361ee; --cyan:#4cc9f0;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Outfit',sans-serif;
+  --shadow-sm:0 2px 12px rgba(114,9,183,0.08);
+  --shadow-md:0 8px 32px rgba(114,9,183,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:400;overflow-x:hidden;line-height:1.6;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(247,244,239,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.07);}
+.nav-logo{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;}
+.nav-logo span{color:var(--teal);font-style:italic;}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:0.85rem;font-weight:500;letter-spacing:0.06em;color:var(--muted);text-decoration:none;transition:color 0.2s;text-transform:uppercase;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--teal);color:#fff !important;padding:0.5rem 1.2rem;font-weight:600 !important;transition:background 0.2s !important;}
+.nav-cta:hover{background:var(--teal2) !important;}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 4rem 5rem;background:var(--white);border-bottom:1px solid var(--border);}
+.page-hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:3rem;}
+.page-hero-eyebrow{font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;}
+.page-hero-eyebrow::before{content:'';width:32px;height:2px;background:var(--teal);display:block;}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:1;color:var(--ink);margin-bottom:1rem;}
+.page-hero h1 em{font-style:italic;color:var(--teal);}
+.page-hero-desc{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;}
+.pub-stats{display:flex;flex-direction:column;gap:1.2rem;align-items:flex-end;}
+.pub-stat-num{font-family:var(--font-display);font-weight:900;font-size:3rem;color:var(--teal);line-height:1;}
+.pub-stat-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);text-align:right;}
+
+/* MAIN CONTENT */
+.pub-main{padding:5rem 4rem;max-width:1160px;margin:0 auto;}
+.resource-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:2.5rem;}
+.rtab{font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.8rem 1.5rem;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+.rtab:hover{color:var(--teal);}
+.rtab.active{color:var(--teal);border-bottom-color:var(--teal);}
+
+.pub-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);}
+.pub-item{background:var(--white);padding:1.6rem 2rem;display:grid;grid-template-columns:72px 1fr auto;gap:1.5rem;align-items:start;border-left:3px solid transparent;transition:all 0.2s;}
+.pub-item:hover{background:var(--cream);border-left-color:var(--teal);}
+.pub-year{font-family:var(--font-display);font-weight:900;font-size:1.5rem;color:var(--border);line-height:1;padding-top:0.2rem;transition:color 0.2s;}
+.pub-item:hover .pub-year{color:var(--teal);}
+.pub-title{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:0.35rem;line-height:1.3;}
+.pub-title a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(114,9,183,0.3);transition:border-color 0.2s,color 0.2s;}
+.pub-title a:hover{color:#7209b7;border-bottom-color:#7209b7;}
+.pub-authors{font-size:0.82rem;color:var(--muted);margin-bottom:0.3rem;}
+.pub-authors strong{color:var(--teal2);font-style:italic;font-weight:600;}
+.pub-journal{font-size:0.8rem;color:var(--coral);font-style:italic;}
+.pub-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.65rem;white-space:nowrap;height:fit-content;border-radius:2px;}
+.badge-j{background:rgba(76,201,240,0.12);color:#1a7fa8;border:1px solid rgba(76,201,240,0.4);}
+.badge-c{background:rgba(67,97,238,0.1);color:#3a0ca3;border:1px solid rgba(67,97,238,0.35);}
+.badge-p{background:rgba(247,37,133,0.1);color:#c4006a;border:1px solid rgba(247,37,133,0.35);}
+.badge-d { background: rgba(76,201,240,0.08); color: #6B3FA0; border: 1px solid rgba(114,9,183,0.3); }
+.pub-award {
+  font-size: 0.78rem; font-weight: 600;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  margin-top: 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+}
+.scholar-link{margin-top:2rem;padding:1.5rem 2rem;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.scholar-link p{font-size:0.9rem;color:var(--muted);}
+.scholar-link a{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;border:1.5px solid var(--teal);padding:0.6rem 1.3rem;transition:all 0.2s;}
+.scholar-link a:hover{background:var(--teal);color:white;}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+footer{background:var(--ink);color:rgba(255,255,255,0.5);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;font-size:0.78rem;letter-spacing:0.06em;}
+footer .footer-logo{font-family:var(--font-display);font-weight:700;font-size:1rem;color:white;}
+footer .footer-logo span{color:var(--teal);font-style:italic;}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+  .page-hero{padding:7rem 1.5rem 3rem;} .page-hero-inner{grid-template-columns:1fr;} .pub-stats{display:none;}
+  .pub-main{padding:3rem 1.5rem;}
+  .pub-item{grid-template-columns:56px 1fr;} .pub-badge{display:none;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem;}
+}
+
+/* ── HAMBURGER ── */
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.hamburger span { display:block; width:24px; height:2px; background:var(--ink); border-radius:2px; transition:all 0.3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; z-index:199; background:rgba(247,244,239,0.98); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); flex-direction:column; padding:1rem 1.5rem 1.5rem; gap:0; }
+.mobile-menu.open { display:flex; }
+.mobile-menu a { font-size:1rem; font-weight:500; letter-spacing:0.06em; color:var(--ink2); text-decoration:none; text-transform:uppercase; padding:0.9rem 0; border-bottom:1px solid var(--border); transition:color 0.2s; }
+.mobile-menu a:last-child { border-bottom:none; }
+.mobile-menu a:hover { color:var(--teal); }
+.mobile-menu a.nav-cta { margin-top:0.8rem; background:var(--teal); color:white !important; text-align:center; padding:0.85rem; border-bottom:none; }
+
+@media(max-width:960px){
+  nav{padding:0.9rem 1.5rem;} .nav-links{display:none;} .hamburger{display:flex;}
+  .page-hero{padding:7rem 1.5rem 3rem;}
+  .page-hero-inner{grid-template-columns:1fr !important;} .pub-stats{display:none;}
+  .pub-main{padding:3rem 1.5rem;}
+  .resources-main{padding:3rem 1.5rem;}
+  .pub-item{grid-template-columns:54px 1fr;gap:1rem;padding:1.2rem 1rem;} .pub-badge{display:none;}
+  .resource-tabs{flex-wrap:wrap;}
+  .rtab{font-size:0.72rem;padding:0.6rem 0.9rem;}
+  .resource-panel.active{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem;}
+  .scholar-link{flex-direction:column;gap:1rem;align-items:flex-start;}
+}
+@media(max-width:480px){
+  nav{padding:0.8rem 1rem;}
+  .page-hero{padding:6rem 1rem 2.5rem;}
+  .pub-main{padding:2rem 1rem;}
+  .resources-main{padding:2rem 1rem;}
+  .pub-item{grid-template-columns:1fr;}
+  .pub-year{font-size:0.85rem;color:var(--teal);}
+  .rtab{padding:0.5rem 0.65rem;font-size:0.65rem;}
+  footer{padding:1.2rem 1rem;font-size:0.72rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">Dr. <span>Shikha Prashad</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="publications.html" class="active">Publications</a></li>
+    <li><a href="index.html#teaching">Teaching</a></li>
+    <li><a href="resources.html">Grad Resources</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#about" onclick="closeMenu()">About</a>
+  <a href="index.html#research" onclick="closeMenu()">Research</a>
+  <a href="index.html#teaching" onclick="closeMenu()">Teaching</a>
+  <a href="resources.html">Grad Resources</a>
+  <a href="publications.html">Publications</a>
+  <a href="index.html#contact" class="nav-cta" onclick="closeMenu()">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-hero-eyebrow">Scholarly Output</div>
+      <h1>Publications &amp; <em>Presentations</em></h1>
+      <p class="page-hero-desc">Peer-reviewed journal articles, conference presentations, and preprints from my research program in kinesiology and cognitive neuroscience.</p>
+    </div>
+    <div class="pub-stats">
+      <div>
+        <div class="pub-stat-num" id="pub-total-count">—</div>
+        <div class="pub-stat-label">Total Research Output</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pub-main">
+  <div class="resource-tabs reveal" style="margin-bottom:0;border-bottom:2px solid var(--border);">
+    <button class="rtab active" onclick="switchPubs('all',this)">All</button>
+    <button class="rtab" onclick="switchPubs('journal',this)">Journal Articles</button>
+    <button class="rtab" onclick="switchPubs('conference',this)">Conference</button>
+    <button class="rtab" onclick="switchPubs('preprint',this)">Preprints</button>
+	<button class="rtab" onclick="switchPubs('dissertation', this)">Dissertation</button>
+  </div>
+
+  <div class="pub-list reveal" id="pub-list">
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title">Impaired micro-online motor learning processes in individuals with severe anxiety</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Murray, A., & Rednoske, V.M.</div>
+          <div class="pub-journal">Frontiers in Human Neuroscience</div>
+      </div>
+      <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0338082" target="_blank">Longer chronic cannabis use in humans is associated with impaired implicit motor learning and supranormal resting state cortical activity</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Paek, A.Y., & Fournier, L.R.</div>
+          <div class="pub-journal">PLOS One, 21(1), e0338082</div>
+      </div>
+      <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1123/jmld.2024-0072" target="_blank">A review of the differential effects of age on online and offline learning of implicit motor sequences</a></div>
+          <div class="pub-authors">Murray, A. & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Journal of Motor Learning and Development, 13(3), 605-631</div>
+      </div>
+      <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="conference">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Physical activity mediates age-related impairment in motor adaptation in adults aged 50-65 years</div>
+          <div class="pub-authors">Rednoske, V.M., Dai, S., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">North American Society for the Psychology of Sport and Physical Activity Annual Meeting, Lake Tahoe, CA</div>
+      </div>
+      <span class="pub-badge badge-c">Conference</span>
+    </div>
+	
+	  <div class="pub-item" data-type="preprint">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1101/2025.07.31.667972" target="_blank">Higher attention is associated with stronger sensorimotor connectivity during a target pursuit task</a></div>
+          <div class="pub-authors">Paek, A.Y. & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">bioRxiv, 2025.07.31.667972</div>
+        </div>
+        <span class="pub-badge badge-p">Preprint</span>
+      </div>
+	  
+	  <div class="pub-item" data-type="journal">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1007/s00221-023-06772-w" target="_blank">Different neurocognitive controls modulate obstacle avoidance through pregnancy</a></div>
+          <div class="pub-authors">Jamali, P., Kinkade, K.M., Ericson, A., Tyler, B., <strong>Prashad, S.</strong>, & Catena, R.D.</div>
+          <div class="pub-journal">Experimental Brain Research, 242, 505-519</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Effects of anxiety on motor sequence learning</div>
+          <div class="pub-authors">Murray, A., Rednoske, V.M., Paek, A.Y., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">North American Society for the Psychology of Sport and Physical Activity Annual Meeting, New Orleans, LA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="preprint">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1101/2023.02.09.527923" target="_blank">Repetitive execution of a reach-and-lift task is associated with inter-trial changes in movement-related EEG features and their predictive power</a></div>
+          <div class="pub-authors">Paek, A.Y. & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">bioRxiv, 2023.02.09.527923</div>
+        </div>
+        <span class="pub-badge badge-p">Preprint</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Which task subgoal will you choose first? Sensitivity to conservation of task effort in chronic cannabis users and non-users</div>
+          <div class="pub-authors">Fournier., L.F., <strong>Prashad, S.</strong>, & Paek, A.Y.</div>
+          <div class="pub-journal">Psychonomic Society’s 2023 Annual Meeting, San Francisco, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Does repetition in a motor task result in weaker movement-related EEG modulations?</div>
+          <div class="pub-authors">Paek, A.Y., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, Washington, DC</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Impact of chronic cannabis use on motor behavior</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Paek, A.Y., & Fournier, L.R.</div>
+          <div class="pub-journal">Annual Meeting of the Cognitive Neuroscience Society, San Francisco, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2022</div>
+        <div>
+          <div class="pub-title">Repetitive practice attenuates EEG spectral features associated with upperlimb movement</div>
+          <div class="pub-authors">Paek, A.Y., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, San Diego, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2022</div>
+        <div>
+          <div class="pub-title">Gaps in brain-machine interface practices related to neural Efficiency</div>
+          <div class="pub-authors">Paek, A.Y., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">North American Society for the Psychology of Sport and Physical Activity Annual Meeting, Kona, HI</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="journal">
+        <div class="pub-year">2021</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1123/jmld.2020-0031" target="_blank">Sequence structure has a differential effect on underlying motor learning processes</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Du, Y., & Clark, J.E.</div>
+          <div class="pub-journal">Journal of Motor Learning and Development, 9, 38-57</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
+
+	  <div class="pub-item" data-type="preprint">
+        <div class="pub-year">2021</div>
+        <div>
+          <div class="pub-title"><a href="https://osf.io/preprints/edarxiv/3awdq_v1" target="_blank">Why Research Productivity Among Women in Academia Suffered During the Early Stages of COVID-19 Crisis: A Qualitative Analysis</a></div>
+          <div class="pub-authors">Lambrechts, A.A., Larasatie, P., Boutelier, S., Guta, H.A., Leonowicz-Bukala, I. & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">EdArXiv</div>
+        </div>
+        <span class="pub-badge badge-p">Preprint</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2021</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.pnpbp.2020.110183" target="_blank">The contributions of the endocannabinoid system and stress on the neural processing of reward stimuli</a></div>
+          <div class="pub-authors">Filbey, F.M., Beaton, D., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Progress in Neuro-Psychopharmacology and Biological Psychiatry, 106, 110183</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2020</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.drugalcdep.2020.107931" target="_blank">Sex-related differences in subjective, but not neural, cue-elicited craving response in heavy cannabis users</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Hammonds, R.P., Wiese, A.L., Milligan, A.L., & Filbey, F.M.</div>
+          <div class="pub-journal">Drug and Alcohol Dependence, 209, 107931</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2020</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.addbeh.2019.106152" target="_blank">Recent tobacco use has widespread associations with adolescent white matter microstructure</a></div>
+          <div class="pub-authors">Thayer, R.E., Hansen, N.S., <strong>Prashad, S.</strong>, Karoly, H., Filbey, F.M., Bryan, A.D., & Feldstein Ewing, S.W.</div>
+          <div class="pub-journal">Addictive behaviors 101, 106152</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2020</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.addbeh.2019.106152" target="_blank">Sex-related differences in subjective, but not neural, cue-elicited craving response in heavy cannabis users</a></div>
+          <div class="pub-authors">Thayer, R.E., Hansen, N.S., <strong>Prashad, S.</strong>, Karoly, H., Filbey, F.M., Bryan, A.D., & Feldstein Ewing, S.W.</div>
+          <div class="pub-journal">Addictive behaviors 101, 106152</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2019</div>
+        <div>
+          <div class="pub-title">Sex-related differences in subjective, but not neural, cue-elicited craving response in heavy cannabis users</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Hammonds, R.P., Wiese, A.L., Milligan, A.L., & Filbey, F.M.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, Chicago, IL</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2019</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1111/ejn.14194" target="_blank">Testing the role of the posterior cingulate cortex in processing salient stimuli in cannabis users: An rTMS study</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Dedrick, E.S., To, W.T., Vanneste, S., & Filbey, F.M.</div>
+          <div class="pub-journal">European Journal of Neuroscience, 50(3), 2357-2369</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2018</div>
+        <div>
+          <div class="pub-title">Interaction of Cannabinoid Receptor Genes and Stress on Neural Responsivity to Reward Cues</div>
+          <div class="pub-authors">Filbey, F.M., Beaton, D., & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Annual Meeting of the American College of Neuropsychopharmacology, Hollywood, FL</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2018</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1007/s00429-018-1690-5" target="_blank">Differential associations of combined vs. isolated cannabis and nicotine on brain resting state networks</a></div>
+          <div class="pub-authors">Filbey, F.M., Gohel, S., <strong>Prashad, S.</strong>, & Biswal, B.B.</div>
+          <div class="pub-journal">Brain Structure and Function, 223(7), 3317-3326</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2018</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1111/ejn.14194" target="_blank">Cannabis users exhibit increased cortical activation during resting state compared to non-users</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Dedrick, E.S., & Filbey, F.M.</div>
+          <div class="pub-journal">NeuroImage, 179, 176-186</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+	
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2018</div>
+        <div>
+          <div class="pub-title">Testing the role of the posterior cingulate cortex in processing salient stimuli in cannabis users</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Dedrick, E.S., To, W.T., Vanneste, S., & Filbey, F.M.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, San Diego, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2018</div>
+        <div>
+          <div class="pub-title">Regularized linear regression guides development of a multilocus genetic profile score for cannabis use disorder</div>
+          <div class="pub-authors">Ketcherside, A., Rao, M., <strong>Prashad, S.</strong>, Goldsmith, A., & Filbey, F.M.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Biological Psychiatry, New York, NY</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2017</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.drugalcdep.2020.107931" target="_blank">Cross-cultural effects of cannabis use disorder: Evidence to support a cultural neuroscience approach</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Milligan, A.L., Cousijn, J., & Filbey, F.M.</div>
+          <div class="pub-journal">Current Addiction Reports, 2(4), 100-109</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2017</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.cobeha.2016.07.001" target="_blank">Cognitive motor deficits in cannabis users</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong> & Filbey, F.M.</div>
+          <div class="pub-journal">Current Opinion in Behavioral Sciences 13, 1-7</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2017</div>
+        <div>
+          <div class="pub-title">Motor learning deficits in cannabis users </div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Dedrick, E.S., & Filbey, F.M.</div>
+          <div class="pub-journal">Annual Meeting of the Cognitive Neuroscience Society, San Francisco, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2016</div>
+        <div>
+          <div class="pub-title">EEG resting state analysis of cannabis users of cannabis with and without rTMS</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Dedrick, E.S., To, W. T., Rhinehardt, T., Eroh, J., Vanneste, S., Hart, J. Jr., & Filbey, F.M.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, San Diego, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2016</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.3389/fnhum.2016.00087" target="_blank">Probabilistic motor sequence yields greater offline and less online learning than fixed sequence</a></div>
+          <div class="pub-authors">*Du, Y., *<strong>Prashad, S.</strong> Schoenbrun, I., & Clark, J.E</div>
+          <div class="pub-journal">Frontiers in Human Neuroscience, 10, 87</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+	<div class="pub-item" data-type="dissertation">
+		<div class="pub-year">2016</div>
+		<div>
+			<div class="pub-title">The effects of sequence structure, age-related impairments, and Parkinson's disease on motor sequence learning</div>
+			<div class="pub-authors"><strong>Prashad, S.</strong></div>
+			<div class="pub-journal">Doctoral Dissertation, University of Maryland, College Park</div>
+		</div>
+		<span class="pub-badge badge-d">Dissertation</span>
+	</div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2014</div>
+        <div>
+          <div class="pub-title">Sequence structure has a differential effect in typically aging adults</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Du, Y., & Clark, J.E.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, Washington, DC</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2013</div>
+        <div>
+          <div class="pub-title">The importance of sequence structure in motor sequence learning</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Youlios, S., Robinson, C., Du, Y., & Clark, J.E.</div>
+          <div class="pub-journal">Annual Bioscience Research and Technology Review Day, University of Maryland, College Park, MD</div>
+		  <div class="pub-award">🏆 Best Poster in Neuroscience and Cognitive Science Award</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2013</div>
+        <div>
+          <div class="pub-title">The importance of sequence structure in motor sequence learning</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Youlios, S., Robinson, C., Du, Y., & Clark, J.E.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, San Diego, CA</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2012</div>
+        <div>
+          <div class="pub-title">Learning a probabilistic sequence is different from learning a fixed sequence in motor sequence learning </div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Youlios, S., Du, Y., & Clark, J.E.</div>
+          <div class="pub-journal">Annual Bioscience Research and Technology Review Day, University of Maryland, College Park, MD</div>
+		  <div class="pub-award">🏆 Best Poster in Neuroscience and Cognitive Science Award</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2011</div>
+        <div>
+          <div class="pub-title">Characterizing whole-body movement kinematics of functional motor actions in Parkinson’s disease: II. Application to Activities of Daily Living</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Venkatakrishnan, A., & Contreras-Vidal, J.L.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, Washington, DC</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2011</div>
+        <div>
+          <div class="pub-title">Characterizing whole-body movement kinematics of functional motor actions in Parkinson’s disease: I. Methods</div>
+          <div class="pub-authors">Venkatakrishnan, A.,<strong>Prashad, S.</strong>, & Contreras-Vidal, J.L.</div>
+          <div class="pub-journal">Annual Meeting of the Society for Neuroscience, Washington, DC</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2011</div>
+        <div>
+          <div class="pub-title">The macrostructure of rest tremor in Parkinson’s disease</div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Venkatakrishnan, A., & Contreras-Vidal, J.L.</div>
+          <div class="pub-journal">Biennial Conference of the International Graphonomics Society, Cancun, Mexico</div>
+		  <div class="pub-award">🏆 Best Student Presentation in Neuroscience Award</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2009</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1016/j.exger.2008.08.024" target="_blank">Shortest path algorithms combined with natural language
+parsing, map pathways involved in neuroendocrine aging</a></div>
+          <div class="pub-authors">Garan, S.A., Freitag, W., Gouw, A.M., Rizvi, B., <strong>Prashad, S.</strong> & Csapo, V.</div>
+          <div class="pub-journal">Experimental Gerontology, 44(1), 129</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+
+	  <div class="pub-item" data-type="conference">
+        <div class="pub-year">2008</div>
+        <div>
+          <div class="pub-title">Using robots to introduce computer programming to middle schools</div>
+          <div class="pub-authors">*Gupta, M., *Muhammad, M.N., *<strong>Prashad, S.</strong>, & Blank, D.S.</div>
+          <div class="pub-journal">Annual Grace Hopper Celebration of Women in Computing, Keystone, CO</div>
+        </div>
+        <span class="pub-badge badge-c">Conference</span>
+      </div>
+
+    <div class="pub-item" data-type="journal">
+        <div class="pub-year">2008</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1109/MPRV.2008.29" target="_blank">Designing personal robots for education: Hardware, software, and curriculum</a></div>
+          <div class="pub-authors">Balch, T., Summet, J., Blank, D., Kumar, D., Guzdial, M., O'Hara, K., Walker, D., Sweat, M., Gupta, G., Tansley, S., Jackson, J., Gupta, M., Muhammad, M.N., <strong>Prashad, S.</strong>, Eilbert, N., Gavin, A.</div>
+          <div class="pub-journal">IEEE Pervasive Computing, 7(2), 5-9</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+    </div>
+	
+  </div>
+
+  <div class="scholar-link reveal" style="justify-content: center;">
+<!--    <p>This list shows selected publications. For a complete record including book chapters and invited reviews:</p>-->
+    <a href="https://scholar.google.com/citations?hl=en&user=O74i8nQAAAAJ">View on Google Scholar</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Dr. <span>Shikha Prashad</span></div>
+  <span>Cognitive Neuroscientist </span>
+  <span>© 2026 · All Rights Reserved</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Auto publication count — counts pub-items on this page
+  (function() {
+    const total = document.querySelectorAll('#pub-list .pub-item').length;
+    const el = document.getElementById('pub-total-count');
+    if (el) el.textContent = total;
+  })();
+
+  function switchPubs(type, btn) {
+    btn.closest('.resource-tabs').querySelectorAll('.rtab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#pub-list .pub-item').forEach(item => {
+      item.style.display = (type === 'all' || item.dataset.type === type) ? 'grid' : 'none';
+    });
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

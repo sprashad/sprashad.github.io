@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Shikha Prashad — Cognitive Neuroscientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --cream:   #F7F4EF;
+  --cream2:  #EDE9E1;
+  --white:   #FFFFFF;
+  --ink:     #1A1A2E;
+  --ink2:    #2E3A4E;
+  --muted:   #7A8899;
+  --border:  #D8D2C8;
+  --teal:    #7209b7;
+  --teal2:   #3a0ca3;
+  --teal-lt: #f0e6ff;
+  --teal-md: #b980e0;
+  --coral:   #f72585;
+  --gold:    #4361ee;
+  --pink:    #f72585;
+  --indigo:  #3a0ca3;
+  --blue:    #4361ee;
+  --cyan:    #4cc9f0;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
+  --shadow-sm: 0 2px 12px rgba(114,9,183,0.08);
+  --shadow-md: 0 8px 32px rgba(114,9,183,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4rem;
+  background: rgba(247,244,239,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.nav-logo span { color: var(--teal); font-style: italic; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.2s; text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-links a.active { color: var(--teal); }
+.nav-cta {
+  background: var(--teal); color: #fff !important;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600 !important; color: white;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--teal2) !important; color: #fff !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 0;
+  align-items: stretch;
+  padding-top: 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  padding: 7rem 4rem 5rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 1;
+}
+.hero-right {
+  background: var(--teal);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero-photo-area {
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(160deg, rgba(114,9,183,0.6) 0%, rgba(58,12,163,0.85) 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  padding: 3rem 2rem;
+  position: relative;
+}
+.photo-placeholder {
+  width: 260px; height: 340px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.photo-placeholder svg { opacity: 0.5; }
+.photo-caption {
+  text-align: center; color: rgba(255,255,255,0.9);
+}
+.photo-caption h3 {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.photo-caption p { font-size: 0.85rem; opacity: 0.75; line-height: 1.5; }
+
+.hero-teal-dots {
+  position: absolute; top: 2rem; right: 2rem;
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 6px;
+  opacity: 0.3;
+}
+.hero-teal-dots span {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: white; display: block;
+}
+
+.eyebrow {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+.eyebrow::before {
+  content: ''; width: 32px; height: 2px; background: var(--teal); display: block;
+}
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  line-height: 1.05; font-weight: 900;
+  color: var(--ink); margin-bottom: 0.5rem;
+}
+h1 em {
+  font-style: italic; color: var(--teal); display: block;
+}
+.hero-title-sub {
+  font-size: 1rem; font-weight: 500; color: var(--muted);
+  letter-spacing: 0.05em; margin-bottom: 2rem;
+  padding-left: 2px;
+  border-left: 3px solid var(--teal-md);
+  padding-left: 1rem;
+}
+.hero-bio {
+  font-size: 1.05rem; color: var(--ink2);
+  max-width: 1100px; line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.hero-bio strong { color: var(--teal); font-weight: 600; }
+
+.hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+.chip {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+  padding: 0.35rem 0.9rem;
+  background: var(--teal-lt); color: var(--teal2);
+  border: 1px solid var(--teal-md);
+  border-radius: 100px;
+}
+
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.85rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.85rem 2rem; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: all 0.22s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-primary:hover { background: var(--teal2); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(114,9,183,0.25); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+.hero-stats-row {
+  display: flex; gap: 0; border-top: 1px solid var(--border);
+  padding-top: 2.5rem; margin-top: 2rem;
+}
+.hstat {
+  padding-right: 2.5rem; margin-right: 2.5rem;
+  border-right: 1px solid var(--border);
+}
+.hstat:last-child { border-right: none; }
+.hstat-num {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 2.2rem; color: var(--teal); line-height: 1;
+}
+.hstat-label {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin-top: 0.25rem;
+}
+
+/* ── SECTIONS COMMON ── */
+section { padding: 6rem 4rem; position: relative; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-header { margin-bottom: 3.5rem; }
+.section-kicker {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 0.7rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-kicker::after {
+  content: ''; flex: 1; max-width: 40px; height: 1.5px; background: var(--teal-md);
+}
+h2 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.1; color: var(--ink);
+}
+h2 em { font-style: italic; color: var(--teal); }
+.section-lead {
+  font-size: 1.05rem; color: var(--muted); line-height: 1.75;
+  max-width: 1100px; margin-top: 1rem;
+}
+
+/* ── RESEARCH ── */
+#research { background: var(--white); }
+.research-layout {
+  display: grid; grid-template-columns: 340px 1fr; gap: 5rem; align-items: start;
+}
+.research-sidebar {}
+.research-sidebar p {
+  font-size: 0.98rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1.5rem;
+}
+.methods-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
+.methods-list li {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.88rem; color: var(--ink2); font-weight: 500;
+}
+.methods-list li::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
+}
+
+.research-areas { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.research-item {
+  background: var(--cream);
+  padding: 2rem 2.2rem;
+  border-left: 4px solid transparent;
+  transition: all 0.25s; cursor: default;
+  display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;
+}
+.research-item:hover {
+  background: var(--white); border-left-color: var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.research-icon {
+  width: 44px; height: 44px; background: var(--teal-lt);
+  display: grid; place-items: center; font-size: 1.2rem;
+  border: 1px solid var(--teal-md); flex-shrink: 0;
+  margin-top: 2px;
+}
+.research-body {}
+.research-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+  color: var(--ink); margin-bottom: 0.5rem;
+}
+.research-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+/* ── TEACHING ── */
+#teaching { background: var(--cream); }
+.teaching-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.course-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 2rem; position: relative; overflow: hidden;
+  transition: all 0.25s; box-shadow: var(--shadow-sm);
+}
+.course-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--teal-md); transition: background 0.25s;
+}
+.course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.course-card:hover::after { background: var(--teal); }
+.course-num {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem;
+}
+.course-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+  color: var(--ink); margin-bottom: 0.7rem; line-height: 1.25;
+}
+.course-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.2rem; }
+.course-meta {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.course-tag {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem; background: rgba(76,201,240,0.12);
+  color: #1a7fa8; border-radius: 100px;
+}
+
+.teaching-philosophy {
+  margin-top: 3rem; background: var(--teal);
+  padding: 3rem 3.5rem; color: white;
+  display: grid; grid-template-columns: 1fr 3fr; gap: 3rem; align-items: center;
+}
+.phil-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem;
+}
+.phil-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.6rem;
+  line-height: 1.2;
+}
+.phil-text { font-size: 1rem; opacity: 0.9; line-height: 1.8; }
+.phil-text p { margin-bottom: 1rem; }
+.phil-text p:last-child { margin-bottom: 0; }
+
+/* ── GRAD RESOURCES ── */
+#resources { background: var(--white); }
+.resources-intro {
+  background: var(--teal-lt); border: 1px solid var(--teal-md);
+  padding: 1.5rem 2rem; margin-bottom: 3rem;
+  border-left: 4px solid var(--teal);
+  font-size: 0.95rem; color: var(--ink2); line-height: 1.7;
+}
+.resources-intro strong { color: var(--teal2); }
+
+.resource-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 2.5rem; }
+.rtab {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.8rem 1.5rem;
+  cursor: pointer; border: none; background: none;
+  color: var(--muted); border-bottom: 2px solid transparent;
+  margin-bottom: -2px; transition: all 0.2s;
+}
+.rtab:hover { color: var(--teal); }
+.rtab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+.resource-panel { display: none; }
+.resource-panel.active { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
+
+.resource-card {
+  border: 1px solid var(--border); background: var(--cream);
+  padding: 1.5rem 1.8rem; display: flex; flex-direction: column;
+  gap: 0.5rem; transition: all 0.22s;
+  position: relative; overflow: hidden;
+}
+.resource-card:hover {
+  border-color: var(--teal-md); background: var(--white);
+  transform: translateY(-2px); box-shadow: var(--shadow-sm);
+}
+.resource-card-type {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.type-mine { color: var(--teal); }
+.type-external { color: var(--gold); }
+.type-mine::before { content: '★'; font-size: 0.7rem; }
+.type-external::before { content: '↗'; font-size: 0.85rem; }
+
+.resource-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: var(--ink); line-height: 1.3;
+}
+.resource-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.resource-link {
+  margin-top: 0.5rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--teal); text-decoration: none; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  transition: gap 0.2s;
+}
+.resource-link:hover { gap: 0.6rem; }
+.resource-link::after { content: '→'; }
+
+/* ── PUBLICATIONS ── */
+#publications { background: var(--cream); }
+.pub-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.pub-item {
+  background: var(--white); padding: 1.6rem 2rem;
+  display: grid; grid-template-columns: 72px 1fr auto;
+  gap: 1.5rem; align-items: start;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+.pub-item:hover { background: var(--cream); border-left-color: var(--teal); }
+.pub-year {
+  font-family: var(--font-display); font-weight: 900; font-size: 1.5rem;
+  color: var(--border); line-height: 1; padding-top: 0.2rem;
+  transition: color 0.2s;
+}
+.pub-item:hover .pub-year { color: var(--teal); }
+.pub-title a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(114,9,183,0.3); transition: border-color 0.2s, color 0.2s; }
+.pub-title a:hover { color: #7209b7; border-bottom-color: #7209b7; }
+.pub-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3;
+}
+.pub-authors { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; }
+.pub-authors strong { color: var(--teal2); font-style: italic; font-weight: 600; }
+.pub-journal { font-size: 0.8rem; color: var(--coral); font-style: italic; }
+.pub-badge {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem; white-space: nowrap; height: fit-content; border-radius: 2px;
+}
+.badge-j { background: rgba(76,201,240,0.12); color: #1a7fa8; border: 1px solid rgba(76,201,240,0.4); }
+.badge-c { background: rgba(67,97,238,0.1); color: #3a0ca3; border: 1px solid rgba(67,97,238,0.35); }
+.badge-p { background: rgba(247,37,133,0.1); color: #c4006a; border: 1px solid rgba(247,37,133,0.35); }
+
+.pub-more {
+  text-align: center; padding: 2rem;
+  border: 1px solid var(--border); border-top: none;
+  background: var(--white);
+}
+.pub-more a {
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--teal); text-decoration: none;
+}
+.pub-more a:hover { text-decoration: underline; }
+
+/* ── CONTACT ── */
+#contact { background: var(--white); padding-bottom: 0; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.contact-left {}
+.contact-left p { font-size: 1rem; color: var(--ink2); line-height: 1.8; margin-bottom: 2rem; }
+.contact-detail-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.cd-row {
+  display: flex; align-items: flex-start; gap: 1rem;
+  font-size: 0.9rem; color: var(--ink2);
+}
+.cd-icon {
+  width: 34px; height: 34px; background: var(--teal-lt);
+  border: 1px solid var(--teal-md);
+  display: grid; place-items: center; font-size: 0.9rem; flex-shrink: 0;
+}
+.cd-row a { color: var(--teal); text-decoration: none; }
+.cd-row a:hover { text-decoration: underline; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fg { display: flex; flex-direction: column; gap: 0.35rem; }
+.fg label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.fg input, .fg textarea, .fg select {
+  background: var(--cream); border: 1.5px solid var(--border);
+  color: var(--ink); font-family: var(--font-body); font-size: 0.95rem;
+  padding: 0.75rem 1rem; outline: none; resize: vertical;
+  transition: border-color 0.2s; border-radius: 2px;
+  appearance: none;
+}
+.fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--teal); }
+.fg textarea { min-height: 110px; }
+
+
+/* ── ABOUT ── */
+#about { background: var(--cream); }
+.about-layout {
+  display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start;
+}
+.about-bio p {
+  font-size: 1.02rem; color: var(--ink2); line-height: 1.85; margin-bottom: 1.3rem;
+}
+.about-bio p strong { color: var(--teal); font-weight: 600; }
+
+.timeline { margin-top: 2.5rem; }
+.timeline-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem;
+}
+.timeline-items { display: flex; flex-direction: column; gap: 0; }
+.tl-item {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 1.2rem; align-items: start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-year {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+  color: var(--teal); letter-spacing: 0.05em; padding-top: 0.15rem;
+}
+.tl-body {}
+.tl-degree {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: var(--ink); line-height: 1.2; margin-bottom: 0.2rem;
+}
+.tl-institution { font-size: 0.85rem; color: var(--muted); }
+.tl-detail { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 0.15rem; }
+
+.about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 1.6rem 1.8rem; box-shadow: var(--shadow-sm);
+}
+.sidebar-card-title {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sidebar-card-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--teal-md);
+}
+.awards-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.award-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+.award-item::before {
+  content: '★'; color: var(--coral); font-size: 0.7rem; margin-top: 0.2rem; flex-shrink: 0;
+}
+.award-title { font-size: 0.88rem; color: var(--ink2); line-height: 1.4; font-weight: 500; }
+.award-year { font-size: 0.75rem; color: var(--muted); }
+
+.interests-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.interest-tag {
+  font-size: 0.75rem; font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  background: var(--teal-lt); color: var(--teal2);
+  border: 1px solid var(--teal-md); border-radius: 100px;
+}
+
+.cv-link-block {
+  background: var(--teal); padding: 1.4rem 1.8rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cv-link-block span {
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  color: white; letter-spacing: 0.04em;
+}
+.cv-link-block a {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: white; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.5); padding: 0.4rem 1rem;
+  transition: background 0.2s;
+}
+.cv-link-block a:hover { background: rgba(255,255,255,0.15); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.5);
+  padding: 2rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.78rem; letter-spacing: 0.06em;
+}
+footer .footer-logo {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; color: white;
+}
+footer .footer-logo span { color: var(--teal); font-style: italic; }
+
+/* ── ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(28px); animation: fu 0.7s ease forwards; }
+@keyframes fu { to { opacity: 1; transform: none; } }
+.d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; }
+.d3 { animation-delay: 0.4s; } .d4 { animation-delay: 0.55s; }
+.d5 { animation-delay: 0.7s; }
+
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── HAMBURGER MENU ── */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; cursor: pointer; padding: 4px;
+  background: none; border: none;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--ink); border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 199;
+  background: rgba(247,244,239,0.98); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  flex-direction: column; padding: 1rem 1.5rem 1.5rem;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 1rem; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--ink2); text-decoration: none; text-transform: uppercase;
+  padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--teal); }
+.mobile-menu a.nav-cta {
+  margin-top: 0.8rem; background: var(--teal); color: white !important;
+  text-align: center; padding: 0.85rem; border-bottom: none; border-radius: 0;
+}
+
+@media (max-width: 960px) {
+  /* NAV */
+  nav { padding: 0.9rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  /* HERO */
+  #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 60px; }
+  .hero-right { display: none; }
+  .hero-left { padding: 3rem 1.5rem 2.5rem; }
+  h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  .hero-bio { font-size: 0.97rem; max-width: 100%; margin-bottom: 1.5rem; }
+  .hero-chips { margin-bottom: 2rem; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { text-align: center; justify-content: center; }
+  .hero-stats-row { gap: 0; padding-top: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .hstat { padding-right: 1.5rem; margin-right: 1.5rem; padding-bottom: 1rem; }
+
+  /* SECTIONS */
+  section { padding: 3.5rem 1.5rem; }
+  .section-inner { max-width: 100%; }
+  h2 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+
+  /* ABOUT */
+  .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .tl-item { grid-template-columns: 80px 1fr; gap: 0.8rem; }
+
+  /* RESEARCH */
+  .research-layout { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* TEACHING */
+  .teaching-grid { grid-template-columns: 1fr; }
+  .teaching-philosophy { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
+
+  /* PUBLICATIONS */
+  .pub-item { grid-template-columns: 54px 1fr; gap: 1rem; padding: 1.2rem 1rem; }
+  .pub-badge { display: none; }
+  .pub-year { font-size: 1.1rem; }
+
+  /* RESOURCE TABS */
+  .resource-tabs { flex-wrap: wrap; gap: 0; }
+  .rtab { font-size: 0.72rem; padding: 0.6rem 0.9rem; }
+  .resource-panel.active { grid-template-columns: 1fr; }
+
+  /* CONTACT */
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* FOOTER */
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+
+  /* PREVIEW SECTION footer row */
+  .preview-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0.8rem 1rem; }
+  .hero-left { padding: 2.5rem 1rem 2rem; }
+  section { padding: 3rem 1rem; }
+  .hstat { padding-right: 1rem; margin-right: 1rem; }
+  .hstat-num { font-size: 1.7rem; }
+  .tl-item { grid-template-columns: 70px 1fr; }
+  .pub-item { grid-template-columns: 1fr; }
+  .pub-year { font-size: 0.85rem; color: var(--teal); }
+  .rtab { padding: 0.55rem 0.7rem; font-size: 0.68rem; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.8rem; }
+  .cv-link-block { flex-direction: column; gap: 1rem; text-align: center; }
+  footer { padding: 1.2rem 1rem; font-size: 0.72rem; }
+}
+a {
+  color: #f72585;
+  text-decoration: underline;
+  text-decoration-color: rgba(247, 37, 133, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+a:hover {
+  color: #7209b7;
+  text-decoration-color: rgba(114, 9, 183, 0.5);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="#hero">Dr. <span>Shikha Prashad</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="resources.html">Grad Resources</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="eyebrow fade-up">Cognitive Neuroscientist</div>
+    <h1 class="fade-up d1">
+      Dr. Shikha<br><em>Prashad</em>
+    </h1>
+    <div class="hero-title-sub fade-up d2">Cognitive Neuroscientist · Assistant Professor of Kinesiology</div>
+    <p class="hero-bio fade-up d3">
+		Welcome! I’m an Assistant Professor of Kinesiology at the University of Texas at Arlington, where I direct a research lab focused on understanding <strong>how the brain supports learning and performing movement</strong>. I study how neural activity changes as we acquire new motor skills, how aging and neurological or psychological conditions can disrupt those processes, and most importantly, <strong>what we can do about it</strong>. </p>
+		<p class="hero-bio fade-up d3">To answer these questions, my team and I integrate behavioral experiments, brain imaging, and computational tools, and draw on perspectives from neuroscience, kinesiology, and psychology. Our goal is to translate what we learn in the lab into real‑world strategies that <strong>enhance human performance and support lifelong brain health</strong>. </p>
+		<p class="hero-bio fade-up d3"> I'm also passionate about teaching and mentoring the next generation of scientists. If you're curious about the brain, movement, or what it's like to do research in this field, I'd love to <strong><a href="#contact"> connect</a></strong>!
+    </p>
+    <div class="hero-chips fade-up d3">
+      <span class="chip">Motor Neuroscience</span>
+      <span class="chip">Cognitive Neuroscience</span>
+      <span class="chip">Motor Behavior</span>
+      <span class="chip">Cognition</span>
+      <span class="chip">Aging</span>
+      <span class="chip">Substance Use</span>
+      <span class="chip">EEG</span>
+      <span class="chip">Neuroplasticity</span>
+    </div>
+    <div class="hero-ctas fade-up d4">
+      <a href="#research" class="btn btn-outline">My Research</a>
+      <a href="#publications" class="btn btn-outline">Publications</a>
+      <a href="#teaching" class="btn btn-outline">Teaching</a>
+      <a href="#resources" class="btn btn-outline">Resources for Students</a>
+    </div>
+    <div class="hero-stats-row fade-up d5">
+      <div class="hstat">
+        <div class="hstat-num" id="hero-pub-count">—</div>
+        <div class="hstat-label">Publications</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">5</div>
+        <div class="hstat-label">Active Projects</div>
+      </div>
+<!--      <div class="hstat">
+        <div class="hstat-num">$X.Xm</div>
+        <div class="hstat-label">Grant Funding</div>
+      </div>-->
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-photo-area">
+      <div class="hero-teal-dots">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+	<div class="photo-placeholder">
+		<img src="photo.jpg" alt="Dr. Shikha Prashad" style="width:100%; height:100%; object-fit:cover;"/>
+	</div>      <div class="photo-caption">
+        <h3>Dr. Shikha Prashad</h3>
+        <p>Assistant Professor<br>Department of Kinesiology<br>University of Texas at Arlington</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">About Me</div>
+      <h2>Background &amp; <em>Training</em></h2>
+      <p class="section-lead"> My journey into cognitive motor neuroscience began with an early fascination with how differences in neural function shape human experiences. </p>
+    </div>
+
+    <div class="about-layout">
+      <div class="reveal">
+        <div class="about-bio">
+          <p>
+            By the time I started college, I had lived in 6 countries. Moving so often and learning about different cultures taught me flexibility, curiosity, and an appreciation for diverse perspectives. These values continue to shape how I approach research, collaboration, and mentorship.
+          </p>
+          <p>
+            I earned my B.A. in Biology and Computer Science from <a href="https://www.brynmawr.edu/" target="_blank">Bryn Mawr College</a>, where I first became captivated by the complexity of the brain. That interest led me to pursue a Ph.D. in Neuroscience and Cognitive Science at the <a href="https://www.umd.edu/" target="_blank">University of Maryland, College Park</a>, under the mentorship of Dr. Jane Clark. There, I learned about Kinesiology, the science of human movement, and I became really curious about <strong>how  the brain learn new movements</strong>. My dissertation used electroencephalography (EEG) to investigate how brain activity changes as we learn new motor skills, and how these neural patterns differ in older adults and individuals with Parkinson’s disease. These questions remain central to my work today.
+          </p>
+          <p>
+            Following my Ph.D., I completed a postdoctoral fellowship at the <a href="https://www.utdallas.edu/" target="_blank">University of Texas at Dallas</a> with Dr. Francesca Filbey, where I expanded my methodological toolkit to include functional MRI (fMRI) and studied how cannabis use affects the brain. I then joined <a href="https://www.wsu.edu/" target="_blank">Washington State University</a> as an Assistant Professor of Kinesiology before coming to the <a href="https://www.uta.edu/" target="_blank">University of Texas at Arlington</a>, where I direct the <a href="https://cogmolab.uta.edu/" target="_blank">Cognitive Motor Neuroscience Lab</a>.
+          </p>
+		  <p>
+		  My journey across countries, disciplines, and institutions has shaped how I approach science: with curiosity, adaptability, and a belief that the best insights emerge when we bring diverse perspectives together.
+		  </p>
+          <p>
+            Outside the lab, I enjoy cooking dishes from around the world, traveling, reading, playing tennis, and fostering rescue dogs. I believe that the best scientists are whole people with full lives, and I try to model that for my students.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-sidebar reveal">
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Education &amp; Training</div>
+          <div class="timeline-items">
+            <div class="tl-item">
+              <div class="tl-year">2024–present</div>
+              <div class="tl-body">
+                <div class="tl-degree">Assistant Professor, Department of Kinesiology</div>
+                <div class="tl-institution">University of Texas at Arlington, Arlington, TX</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2019–2024</div>
+              <div class="tl-body">
+                <div class="tl-degree">Assistant Professor, Department of Kinesiology and Educational Psychology</div>
+                <div class="tl-institution">Washington State University, Pullman, WA</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2016–2019</div>
+              <div class="tl-body">
+                <div class="tl-degree">Postdoctoral Fellow</div>
+                <div class="tl-institution">University of Texas at Dallas, Richardson, TX</div>
+                <!--<div class="tl-detail">Mentor: [Advisor Name]</div> -->
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2016</div>
+              <div class="tl-body">
+                <div class="tl-degree">PhD, Neuroscience and Cognitive Science</div>
+                <div class="tl-institution">University of Maryland, College Park, MD</div>
+                <div class="tl-detail">Dissertation: "The effects of sequence structure, age-related impairments, and Parkinson's disease on motor sequence learning"</div>
+				<div class="tl-detail">Mentor: Dr. Jane Clark</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2009</div>
+              <div class="tl-body">
+                <div class="tl-degree">BA, Biology and Computer Science</div>
+                <div class="tl-institution">Bryn Mawr College, Bryn Mawr, PA</div>
+                <!--<div class="tl-detail">[Honors, if applicable]</div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--        <div class="sidebar-card">
+          <div class="sidebar-card-title">Research Interests</div>
+          <div class="interests-grid">
+            <span class="interest-tag">Motor Neuroscience</span>
+            <span class="interest-tag">Cognitive Neuroscience</span>
+            <span class="interest-tag">EEG</span>
+            <span class="interest-tag">Motor Behavior</span>
+            <span class="interest-tag">Neuroplasticity</span>
+            <span class="interest-tag">fMRI</span>
+            <span class="interest-tag">Cognition</span>
+            <span class="interest-tag">Aging</span>
+            <span class="interest-tag">Substance use</span>
+          </div>
+        </div>-->
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Professional Affiliations</div>
+          <div class="awards-list">
+            <div class="award-item">
+              <div><div class="award-title">North American Society for Psychology of Sport &amp; Physical Activity</div></div>
+            </div>
+            <div class="award-item">
+              <div><div class="award-title">Society for Neuroscience</div></div>
+            </div>
+<!--            <div class="award-item">
+              <div><div class="award-title">American Kinesiology Association</div></div>
+            </div>
+            <div class="award-item">
+              <div><div class="award-title">[Add your societies]</div></div>
+            </div> -->
+          </div>
+        </div>
+
+<!--        <div class="cv-link-block">
+          <span>Curriculum Vitae</span>
+          <a href="#">Download CV</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">Research Program</div>
+      <h2>What I Study &amp; <em>Why It Matters</em></h2>
+      <p class="section-lead">My lab investigates how the brain controls and learns movement, and how this knowledge can be used to optimize human performance and support brain health across the lifespan.</p>
+    </div>
+    <div class="research-layout">
+      <div class="reveal">
+        <p>Movement is fundamental to life. It enables us to walk, work, communicate, create, and compete. By understanding how the brain plans, executes, and adapts movement, we can better support people ranging from older adults and clinical populations to athletes striving for peak performance.</p>
+		<p>&nbsp;</p>
+		<p>My research sits at the intersection of kinesiology and cognitive neuroscience. We use a combination of neuroimaging, behavioral assessments, and computational approaches to uncover <strong>how patterns of brain activity shape the way we move</strong>. </p>
+		<p>&nbsp;</p>
+		<p>A core part of my work examines how <strong> changes in cognition and neural function </strong>, whether due to aging, movement disorders, substance use, or mental health, alter motor behavior. Understanding these interactions allows us to design more effective interventions, training programs, and rehabilitation strategies.</p>
+		<p>&nbsp;</p>
+		<p>In sum, my research explores human performance at three interconnected levels:
+		</p>
+        <ul class="methods-list">
+          <li>Motor behavior: How we move and learn new skills</li>
+          <li>Cognition: How attention, memory, and decision-making influence movement</li>
+          <li>Brain activity: The neural mechanisms that drive motor control and learning </li>
+        </ul>
+      </div>
+
+      <div class="research-areas reveal">
+        <div class="research-item">
+          <div class="research-icon">🧠</div>
+          <div class="research-body">
+            <div class="research-title">Cognitive processes underlying motor behavior</div>
+<!--            <p class="research-desc">How the cerebellum generates internal forward models to predict sensory outcomes and adapt motor output through error-based learning — and how this changes with aging.</p> -->
+            <p class="research-desc"><strong>Movement is as much a cognitive challenge as a physical one.</strong> Our work examines how critical processes, like attention and memory, intersect with the motor system to drive skill acquisition. By investigating the brain mechanisms of motor behavior, we identify ways to optimize performance and learning. </p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon">🚶</div>
+          <div class="research-body">
+            <div class="research-title">Effects of aging on motor and cognitive processes</div>
+            <p class="research-desc"><strong>How do we maintain motor and cognitive function as we age?</strong> We study the intersection of cognitive health and motor control to understand how the brain adapts over time. Through behavioral data and brain imaging, we examine how neural activity changes with aging and identify strategies to maintain mobility and brain health. </p>
+          </div>
+        </div>
+        <div class="research-item">
+          <div class="research-icon">🌿</div>
+          <div class="research-body">
+            <div class="research-title">Effects of substance use on the brain and motor behavior</div>
+            <p class="research-desc"><strong>Despite the rising prevalence of cannabis use, its effects on the motor system remain poorly understood.</strong> I examine how brain activity is altered by cannabis to understand how it impacts motor behavior. Through this research, we provide the empirical foundation necessary to evaluate the long-term implications for brain health, movement, and public safety. </p>
+          </div>
+        </div>
+<!--        <div class="research-item">
+          <div class="research-icon">🔁</div>
+          <div class="research-body">
+            <div class="research-title">Neurofeedback &amp; Motor Enhancement</div>
+            <p class="research-desc">Developing real-time EEG neurofeedback protocols to modulate motor cortex excitability and accelerate skill acquisition in sport and clinical rehabilitation settings.</p>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS PREVIEW -->
+<section id="publications" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">Selected Publications</div>
+      <h2>Recent <em>Work</em></h2>
+      <p class="section-lead">A sample of recent journal articles, conference presentations, and preprints from my research program.</p>
+    </div>
+    <div class="pub-list reveal">
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1371/journal.pone.0338082" target="_blank">Longer chronic cannabis use in humans is associated with impaired implicit motor learning and supranormal resting state cortical activity</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Paek, A.Y., & Fournier, L.R.</div>
+          <div class="pub-journal">PLOS One, 21(1), e0338082</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1123/jmld.2024-0072" target="_blank">A review of the differential effects of age on online and offline learning of implicit motor sequences</a></div>
+          <div class="pub-authors">Murray, A. & <strong>Prashad, S.</strong></div>
+          <div class="pub-journal">Journal of Motor Learning and Development, 13(3), 605-631</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.1007/s00426-025-02139-8" target="_blank">Will you precrastinate? Sensitivity to potential performance costs and effort in chronic cannabis users and non-users</a></div>
+          <div class="pub-authors">Fournier, L.R., <strong>Prashad, S.</strong>, Mouradian, H., & Paek, A.Y.</div>
+          <div class="pub-journal">Psychological Research, 89, 129</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0;padding:1.5rem 2rem;border:1px solid var(--border);border-top:none;background:var(--white);" class="reveal">
+      <span style="font-size:0.82rem;color:var(--muted);" id="preview-pub-count">Showing 3 of — publications — journal articles, conferences &amp; preprints</span>
+      <a href="publications.html" style="font-family:var(--font-body);font-weight:600;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border:1.5px solid var(--teal);padding:0.65rem 1.4rem;transition:all 0.2s;" onmouseover="this.style.background='var(--teal)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--teal)'">View All Publications →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">Teaching</div>
+      <h2>Courses I Have <em>Taught</em></h2>
+      <p class="section-lead">I am committed to evidence-based pedagogy and creating learning environments where students connect theory to real-world movement science.</p>
+    </div>
+
+    <div class="teaching-grid">
+      <div class="course-card reveal">
+<!--        <div class="course-num">KINE 4323 (UTA) / KINES 461 (WSU) </div>-->
+        <div class="course-title">Motor Control & Learning</div>
+        <p class="course-desc">An undergraduate course of the principles of motor learning and the neural systems governing voluntary movement.</p>
+        <div class="course-meta">
+          <span class="course-tag">Undergraduate</span>
+          <span class="course-tag">Core Requirement</span>
+        </div>
+      </div>
+      <div class="course-card reveal">
+<!--        <div class="course-num">KINES 561 (WSU)</div>-->
+        <div class="course-title">Motor Control Theory</div>
+        <p class="course-desc">A graduate seminar with an advanced exploration of theories of motor control. </p>
+        <div class="course-meta">
+          <span class="course-tag">Graduate</span>
+          <span class="course-tag">Reading-Intensive</span>
+<!--          <span class="course-tag">Lab Component</span>-->
+        </div>
+      </div>
+      <div class="course-card reveal">
+<!--        <div class="course-num">KINES 564 (WSU)</div>-->
+        <div class="course-title">Movement Disorders</div>
+        <p class="course-desc">A graduate seminar examining the neural correlates and symptoms of various movement disorders.</p>
+        <div class="course-meta">
+          <span class="course-tag">Graduate</span>
+          <span class="course-tag">Reading-Intensive</span>
+        </div>
+      </div>
+<!--      <div class="course-card reveal">
+        <div class="course-num">KIN 4890</div>
+        <div class="course-title">Exercise &amp; Brain Health</div>
+        <p class="course-desc">How physical activity shapes neural structure and function — from neurogenesis to clinical populations. Bridges basic science and applied exercise prescription.</p>
+        <div class="course-meta">
+          <span class="course-tag">Undergraduate</span>
+          <span class="course-tag">Writing Intensive</span>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-num">KIN 7700</div>
+        <div class="course-title">Research Methods in Kinesiology</div>
+        <p class="course-desc">Rigorous training in experimental design, data collection, statistical analysis, and scientific communication — a cornerstone of our doctoral program.</p>
+        <div class="course-meta">
+          <span class="course-tag">Doctoral</span>
+          <span class="course-tag">Methods</span>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-num">KIN 8010</div>
+        <div class="course-title">Neuroimaging for Movement Scientists</div>
+        <p class="course-desc">Hands-on training in fMRI and EEG data acquisition, preprocessing, and analysis pipelines (FSL, SPM, EEGLAB) tailored for kinesiology research questions.</p>
+        <div class="course-meta">
+          <span class="course-tag">Doctoral</span>
+          <span class="course-tag">Practicum</span>
+        </div>
+      </div>-->
+    </div>
+
+    <div class="teaching-philosophy reveal">
+      <div>
+        <div class="phil-label">My Philosophy</div>
+        <div class="phil-title">Learning by Doing</div>
+      </div>
+      <div class="phil-text">
+         <p>I believe students learn science best by <em>doing</em> science. In my courses, students engage with primary literature, experience the concepts we discuss, apply concepts to real-world examples, and communicate their findings.</p>
+        <p>I am equally committed to fostering an inclusive classroom where diverse perspectives are welcomed, intellectual risk-taking is encouraged, and every student has the support they need to thrive.</p>
+     </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAD RESOURCES PREVIEW -->
+<section id="resources" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">For Graduate Students</div>
+      <h2>Resources I've <em>Curated</em></h2>
+      <p class="section-lead">Guides, tools, and links to help you navigate graduate school, from applications to mental health to dissertation writing.</p>
+    </div>
+    <div style="border:1px solid var(--teal-md);background:var(--teal-lt);padding:3rem 2.5rem;text-align:center;border-left:4px solid var(--teal);" class="reveal">
+      <div style="font-size:2rem;margin-bottom:1rem;">📚</div>
+      <div style="font-family:var(--font-display);font-weight:700;font-size:1.4rem;color:var(--ink);margin-bottom:0.75rem;">Resources Coming Soon</div>
+      <p style="font-size:0.97rem;color:var(--muted);line-height:1.75;max-width:520px;margin:0 auto;">I am currently compiling guides, tools, and curated links across five areas: applying to grad school, fellowships &amp; funding, mentorship, wellbeing, and writing &amp; dissertation support. Check back soon!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">Get in Touch</div>
+      <h2>Work With <em>Me</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p>I welcome inquiries from prospective graduate students, undergraduate researchers, postdoctoral fellows, and collaborators. If you're interested in joining the lab or learning more about my work, please reach out.</p>
+		<p>&nbsp;</p>
+        <div class="contact-detail-list">
+          <div class="cd-row">
+            <div class="cd-icon">📍</div>
+<!--            <span>[Building Name], Room [###]<br>[University Name], [City, State]</span>-->
+            <span>University of Texas at Arlington, Arlington, TX</span>
+          </div>
+<!--          <div class="cd-row">
+            <div class="cd-icon">✉️</div>
+            <span><a href="/cdn-cgi/l/email-protection#e0998f95a0958e8996859293899499ce858495"><span class="__cf_email__" data-cfemail="a9d0c6dce9dcc7c0dfccdbdac0ddd087cccddc">[email&#160;protected]</span></a></span>
+          </div>-->
+		  <div class="cd-row">
+			<div class="cd-icon">🧠</div>
+				<span><a href="https://cogmolab.uta.edu" target="_blank">Cognitive Motor Neuroscience Lab</a></span>
+		</div>
+          <div class="cd-row">
+            <div class="cd-icon">🎓</div>
+            <span><a href="https://scholar.google.com/citations?user=O74i8nQAAAAJ&hl">Google Scholar</a> &nbsp;·&nbsp; <a href="https://www.researchgate.net/profile/Shikha-Prashad">ResearchGate</a> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0002-0590-8400">ORCID</a></span>
+          </div>
+ <!--         <div class="cd-row">
+            <div class="cd-icon">🐦</div>
+            <span><a href="#">@YourHandle</a></span>
+          </div>-->
+		
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <!-- ✏️ FORMSPREE: Replace YOUR_FORM_ID below with your ID from formspree.io/forms -->
+        <form id="contact-form" action="https://formspree.io/f/xwvrqqlw" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="fg">
+              <label for="first-name">First Name</label>
+              <input id="first-name" type="text" name="first_name" placeholder="Jane" required/>
+            </div>
+            <div class="fg">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" type="text" name="last_name" placeholder="Doe" required/>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="jane@university.edu" required/>
+          </div>
+          <div class="fg">
+            <label for="role">I am a…</label>
+            <select id="role" name="role">
+              <option value="">Select one</option>
+              <option>Prospective PhD Student</option>
+              <option>Prospective Postdoc</option>
+              <option>Undergraduate Researcher</option>
+              <option>Research Collaborator</option>
+              <option>Journalist / Media</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your background and what you're hoping to discuss…" required></textarea>
+          </div>
+          <div id="form-status" style="display:none;padding:0.9rem 1.2rem;font-size:0.9rem;border-radius:2px;margin-bottom:0.5rem;"></div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dr. <span>Shikha Prashad</span></div>
+  <span>Cognitive Neuroscientist</span>
+  <span>© 2026 · All Rights Reserved</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Hamburger menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  // Close menu on outside click
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    }
+  });
+
+  // Nav scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Nav active link
+  const sections = document.querySelectorAll('section[id], div[id="hero"]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+
+  // Auto publication count — reads from publications.html at runtime
+  (async () => {
+    try {
+      const res = await fetch('publications.html');
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, 'text/html');
+      const total = doc.querySelectorAll('#pub-list .pub-item').length;
+      const display = total + (total % 1 === 0 ? '' : '+');
+      const heroEl = document.getElementById('hero-pub-count');
+      const previewEl = document.getElementById('preview-pub-count');
+      if (heroEl) heroEl.textContent = total;
+      if (previewEl) previewEl.textContent = `Showing 3 of ${total} publications — journal articles, conferences & preprints`;
+    } catch (e) {
+      // fallback: leave as-is if fetch fails (e.g. opening file locally)
+      const heroEl = document.getElementById('hero-pub-count');
+      if (heroEl && heroEl.textContent === '—') heroEl.textContent = '42+';
+    }
+  })();
+
+  // Resource tabs
+  function switchTab(id, btn) {
+    document.querySelectorAll('.resource-panel').forEach(p => p.classList.remove('active'));
+    btn.closest('.resource-tabs').querySelectorAll('.rtab').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Formspree contact form
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('submit-btn');
+    const status = document.getElementById('form-status');
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        status.style.display = 'block';
+        status.style.background = 'rgba(114,9,183,0.08)';
+        status.style.border = '1px solid var(--teal-md)';
+        status.style.color = 'var(--teal2)';
+        status.textContent = '✓ Message sent! I will be in touch soon.';
+        form.reset();
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        btn.style.opacity = '';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      status.style.display = 'block';
+      status.style.background = 'rgba(247,37,133,0.08)';
+      status.style.border = '1px solid rgba(247,37,133,0.3)';
+      status.style.color = '#c4006a';
+      status.textContent = '✗ Something went wrong. Please email me directly.';
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      btn.style.opacity = '';
+    }
+  }
+
+  // Publication filter tabs
+  function switchPubs(type, btn) {
+    btn.closest('.resource-tabs').querySelectorAll('.rtab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#pub-list .pub-item').forEach(item => {
+      item.style.display = (type === 'all' || item.dataset.type === type) ? 'grid' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
