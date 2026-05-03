@@ -473,6 +473,83 @@ h2 em { font-style: italic; color: var(--teal); }
 .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--teal); }
 .fg textarea { min-height: 110px; }
 
+/* ── PARTICIPATE IN RESEARCH ── */
+#participate { background: var(--white); }
+.studies-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.study-card {
+  background: var(--white); border: 1px solid var(--border);
+  overflow: hidden; transition: all 0.25s; box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+  border-top: 4px solid var(--teal-md);
+}
+.study-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--teal); }
+.study-body { padding: 2rem 2rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.study-status {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; width: fit-content;
+}
+.study-status.recruiting {
+  color: #166534; background: #DCFCE7; border: 1px solid #BBF7D0;
+  padding: 0.25rem 0.7rem; border-radius: 100px;
+}
+.study-status.recruiting::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #16a34a; display: block;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+}
+.study-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+  color: var(--ink); line-height: 1.25;
+}
+.study-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+.study-details {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  border-top: 1px solid var(--border); padding-top: 1rem;
+}
+.study-detail-row {
+  display: grid; grid-template-columns: 130px 1fr;
+  gap: 0.5rem; font-size: 0.85rem;
+}
+.study-detail-label {
+  font-weight: 600; color: var(--teal); font-size: 0.75rem;
+  letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem;
+}
+.study-detail-value { color: var(--ink2); line-height: 1.5; }
+.study-cta {
+  margin-top: auto; padding-top: 1rem;
+}
+.study-cta a {
+  display: block; text-align: center;
+  background: var(--teal); color: white;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.82rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.8rem 1.5rem; text-decoration: none;
+  transition: background 0.2s;
+}
+.study-cta a:hover { background: var(--teal2); color: white; }
+.study-irb {
+  margin-top: 2.5rem; padding: 1.2rem 1.8rem;
+  background: var(--cream); border: 1px solid var(--border);
+  border-left: 3px solid var(--teal-md);
+  font-size: 0.82rem; color: var(--muted); line-height: 1.7;
+}
+.study-irb strong { color: var(--ink2); }
+
+/* Lightbox */
+
+
+@media (max-width: 960px) {
+  .studies-grid { grid-template-columns: 1fr; }
+  .study-detail-row { grid-template-columns: 110px 1fr; }
+}
+
 
 /* ── ABOUT ── */
 #about { background: var(--cream); }
@@ -705,6 +782,7 @@ a:hover {
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#participate">Participate</a></li>
     <li><a href="publications.html">Publications</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="resources.html">Grad Resources</a></li>
@@ -744,7 +822,7 @@ a:hover {
     <div class="hero-stats-row fade-up d5">
       <div class="hstat">
         <div class="hstat-num" id="hero-pub-count">—</div>
-        <div class="hstat-label">Publications</div>
+        <div class="hstat-label">Research Output</div>
       </div>
       <div class="hstat">
         <div class="hstat-num">5</div>
@@ -953,6 +1031,90 @@ a:hover {
   </div>
 </section>
 
+<!-- PARTICIPATE IN RESEARCH -->
+<section id="participate">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-kicker">Get Involved</div>
+      <h2>Participate in <em>Research</em></h2>
+      <p class="section-lead">We are currently recruiting participants for the studies below. All research is conducted in accordance with IRB-approved protocols and participation is completely voluntary.</p>
+    </div>
+
+    <div class="studies-grid">
+
+      <!-- STUDY 1 -->
+      <div class="study-card reveal">
+        <div class="study-body">
+          <span class="study-status recruiting">Now Recruiting</span>
+          <div class="study-title">Impact of Breaks on Motor Control</div>
+          <p class="study-desc">We are looking for adults between the ages of 18-35 for a motor control study. Participation involves completing a single in-person session where you will complete short questionnaires and perform one computerized task.</p>
+          <div class="study-details">
+            <div class="study-detail-row">
+              <span class="study-detail-label">Who Can Join</span>
+              <span class="study-detail-value">Adults 18–35, right-handed, English-speaking, not diagnosed with or treated for a neurological disorder</span>
+            </div>
+            <div class="study-detail-row">
+              <span class="study-detail-label">Time Required</span>
+              <span class="study-detail-value">One 1-hour visit to our lab in UT Arlington</span>
+            </div>
+            <div class="study-detail-row">
+              <span class="study-detail-label">Compensation</span>
+              <span class="study-detail-value">$10 Amazon gift card upon completion of the session</span>
+            </div>
+            <div class="study-detail-row">
+              <span class="study-detail-label">Questions? </span>
+              <span class="study-detail-value">Visit our lab website: <a href="https://cogmolab.uta.edu/participate/" target="_blank">UTA Cognitive Motor Neuroscience Lab →</a></span>
+            </div>
+          </div>
+          <div class="study-cta">
+<!--            <a href="mailto:you@university.edu?subject=Interest in Study 1">Express Interest →</a>-->
+            <a href="https://utaedu.questionpro.com/cogmo-studies" target="_blank">Express Interest →</a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STUDY 2 -->
+      <div class="study-card reveal">
+        <div class="study-body">
+          <span class="study-status recruiting">Now Recruiting</span>
+          <div class="study-title">How do cannabis and nicotine impact our brain activity and motor control?</div>
+          <p class="study-desc">We are looking for participants for our motor control study! This is a 2-session study, and participants will be awarded $50 total after they complete both parts of the study.</p>
+          <div class="study-details">
+            <div class="study-detail-row">
+              <span class="study-detail-label">Who Can Join</span>
+              <span class="study-detail-value">Adults 21–35, right-handed, English-speaking, not diagnosed with or treated for a neurological disorder</span>
+            </div>
+            <div class="study-detail-row">
+              <span class="study-detail-label">Time Required</span>
+              <span class="study-detail-value">Two visits to our lab in UT Arlington: the first visit is 1-hour and the second visit is 2.5 hours]</span>
+            </div>
+            <div class="study-detail-row">
+              <span class="study-detail-label">Compensation</span>
+              <span class="study-detail-value">$10 Amazon gift care upon completion of the first sesison + $40 Amazon gift card upon completion of the second session]</span>
+            </div>
+			<div class="study-detail-row">
+              <span class="study-detail-label">Questions? </span>
+              <span class="study-detail-value">Visit our lab website: <a href="https://cogmolab.uta.edu/participate/" target="_blank">UTA Cognitive Motor Neuroscience Lab →</a></span>
+            </div>
+
+          </div>
+          <div class="study-cta">
+<!--            <a href="mailto:you@university.edu?subject=Interest in Study 1">Express Interest →</a>-->
+            <a href="https://utaedu.questionpro.com/cogmo-studies" target="_blank">Express Interest →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!--    <div class="study-irb reveal">
+      <strong>Important:</strong> All studies are approved by the University of Texas at Arlington Institutional Review Board (IRB). Participation is entirely voluntary and you may withdraw at any time without penalty. Questions? Contact us at <a href="/cdn-cgi/l/email-protection#31485e4471445f58475443425845481f545544"><span class="__cf_email__" data-cfemail="ceb7a1bb8ebba0a7b8abbcbda7bab7e0abaabb">[email&#160;protected]</span></a>.
+    </div>
+  </div>-->
+</section>
+
+
 <!-- PUBLICATIONS PREVIEW -->
 <section id="publications" style="background:var(--cream);">
   <div class="section-inner">
@@ -962,6 +1124,15 @@ a:hover {
       <p class="section-lead">A sample of recent journal articles, conference presentations, and preprints from my research program.</p>
     </div>
     <div class="pub-list reveal">
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div>
+          <div class="pub-title"><a href="https://doi.org/10.3389/fnhum.2026.1757737" target="_blank">Impaired micro-online motor learning processes in individuals with severe anxiety</a></div>
+          <div class="pub-authors"><strong>Prashad, S.</strong>, Murray, A., & Rednoske, V.M.</div>
+          <div class="pub-journal">Frontiers in Human Neuroscience, 20, 1757737</div>
+        </div>
+        <span class="pub-badge badge-j">Journal</span>
+      </div>
       <div class="pub-item">
         <div class="pub-year">2026</div>
         <div>
@@ -980,7 +1151,7 @@ a:hover {
         </div>
         <span class="pub-badge badge-j">Journal</span>
       </div>
-      <div class="pub-item">
+<!--      <div class="pub-item">
         <div class="pub-year">2025</div>
         <div>
           <div class="pub-title"><a href="https://doi.org/10.1007/s00426-025-02139-8" target="_blank">Will you precrastinate? Sensitivity to potential performance costs and effort in chronic cannabis users and non-users</a></div>
@@ -989,7 +1160,7 @@ a:hover {
         </div>
         <span class="pub-badge badge-j">Journal</span>
       </div>
-    </div>
+    </div>-->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0;padding:1.5rem 2rem;border:1px solid var(--border);border-top:none;background:var(--white);" class="reveal">
       <span style="font-size:0.82rem;color:var(--muted);" id="preview-pub-count">Showing 3 of — publications — journal articles, conferences &amp; preprints</span>
       <a href="publications.html" style="font-family:var(--font-body);font-weight:600;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border:1.5px solid var(--teal);padding:0.65rem 1.4rem;transition:all 0.2s;" onmouseover="this.style.background='var(--teal)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--teal)'">View All Publications →</a>
